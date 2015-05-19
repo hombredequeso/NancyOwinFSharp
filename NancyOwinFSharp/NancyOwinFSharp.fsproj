@@ -56,6 +56,13 @@
     </Otherwise>
   </Choose>
   <Import Project="$(FSharpTargetsPath)" Condition="Exists('$(FSharpTargetsPath)')" />
+
+  <!-- Added, as per: http://blog.ploeh.dk/2013/08/26/running-a-pure-f-web-api-on-azure-web-sites/ -->
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" 
+        Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v12.0\WebApplications\Microsoft.WebApplication.targets" 
+        Condition="true" />  
+  
   <ItemGroup>
     <Compile Include="Bootstrapper.fs" />
     <Compile Include="IndexModule.fs" />
